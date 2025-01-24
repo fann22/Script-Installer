@@ -1,4 +1,4 @@
-package dev.trindade.shizuku.example;
+package com.youtube.FannMods.ScriptInstaller;
 
 import android.content.ActivityNotFoundException;
 import android.content.Context;

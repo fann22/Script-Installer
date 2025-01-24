@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivlty" />
         <activity 
-            android:name="dev.trindade.shizuku.example.MainActivity" 
+            android:name="com.youtube.FannMods.ScriptInstaller.MainActivity" 
             android:exported="true">
             <intent-filter>
                 <action 

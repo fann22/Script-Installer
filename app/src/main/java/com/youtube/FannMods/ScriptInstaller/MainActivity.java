@@ -1,4 +1,4 @@
-package dev.trindade.shizuku.example;
+package com.youtube.FannMods.ScriptInstaller;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -14,7 +14,7 @@ import java.io.InputStreamReader;
 
 import rikka.shizuku.Shizuku;
 
-import dev.trindade.shizuku.example.databinding.ActivityMainBinding;
+import com.youtube.FannMods.ScriptInstaller.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 

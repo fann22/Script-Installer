@@ -1,4 +1,4 @@
-package dev.trindade.shizuku.example;
+package com.youtube.FannMods.ScriptInstaller;
 
 import android.content.ContentResolver;
 import android.content.Context;
