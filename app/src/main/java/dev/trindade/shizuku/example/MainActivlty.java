@@ -9,7 +9,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import dev.trindade.shizuku.example.databinding.ActivityMainBinding;
 import rikka.shizuku.Shizuku;
 
 public class MainActivlty extends AppCompatActivity {
@@ -36,15 +35,12 @@ public class MainActivlty extends AppCompatActivity {
         }
         message.setText(ref.msg);
         retryButton.setOnClickListener(v -> {
-            // Tambahkan logika pengecekan Shizuku
             if (Shizuku.pingBinder() && MainActivity.isShizukuInstalled(this) && MainActivity.checkShizukuPermission()) {
                 startActivity(new Intent(this, MainActivity.class));
                 finish();
             } else if (!MainActivity.checkShizukuPermission()) {
-                // Jika aktif, kembali ke UI utama
                 Shizuku.requestPermission(MainActivity.SHIZUKU_REQUEST_CODE);
             } else {
-                // Tetap di layar ini
                 Toast.makeText(this, ref.msg, Toast.LENGTH_SHORT).show();
             }
         });

@@ -8,7 +8,6 @@ import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,11 +42,9 @@ public class FilePicker {
             intent.addCategory(Intent.CATEGORY_OPENABLE);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                // Android 11 (SDK 30) dan lebih tinggi, menggunakan filePickerLauncher
                 intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, false);
                 filePickerLauncher.launch(intent);
             } else {
-                // Android < SDK 30, menggunakan startActivityForResult
                 ((AppCompatActivity) context).startActivityForResult(intent, PICK_FILE_REQUEST_CODE);
             }
         } catch (ActivityNotFoundException e) {
@@ -60,7 +57,6 @@ public class FilePicker {
             FileProcessor fileProcessor = new FileProcessor(context);
             fileProcessor.extractZipFile(uri);
             Log.d("FilePicker", "File selected: " + uri.toString());
-            // You can now use the URI to get the file content or metadata
         }
     }
 }

@@ -23,11 +23,9 @@ public class FileProcessor {
 
     public void extractZipFile(Uri uri) {
         try {
-            // Dapatkan InputStream dari URI
             InputStream inputStream = getInputStreamFromUri(uri);
 
             if (inputStream != null) {
-                // Ekstrak file ZIP
                 extractZipToFolder(inputStream, new File(context.getFilesDir(), "script_pool"));
             }
         } catch (Exception e) {

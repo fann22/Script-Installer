@@ -1,18 +1,13 @@
 package dev.trindade.shizuku.example;
 
-import static dev.trindade.shizuku.example.FilePicker.PICK_FILE_REQUEST_CODE;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
 import android.content.pm.PackageManager;
-import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -43,23 +38,6 @@ public class MainActivity extends AppCompatActivity {
         binding.pickerButton.setOnClickListener(v -> filePicker.openFilePicker());
     }
 
-    /*@Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == PICK_FILE_REQUEST_CODE && resultCode == RESULT_OK) {
-            Uri fileUri = data.getData();
-            String filePath = filePicker.getPathFromUri(fileUri);
-
-            // Cek apakah file path valid
-            if (filePath != null) {
-                Toast.makeText(this, "File Path: " + filePath, Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(this, "Gagal mengambil file", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }*/
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -68,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void someLogic() {
         if (!Shizuku.pingBinder() || !isShizukuInstalled(this) || !checkShizukuPermission()) {
-            // Arahkan ke layar Shizuku Not Activated
             startActivity(new Intent(this, MainActivlty.class));
             finish();
         }
@@ -88,25 +65,7 @@ public class MainActivity extends AppCompatActivity {
         if (Shizuku.isPreV11()) {
             return false;
         }
-
         return Shizuku.checkSelfPermission() == PackageManager.PERMISSION_GRANTED;
-        /*Button status_button = findViewById(R.id.statusButton);
-        Button request_button = findViewById(R.id.requestButton);
-        if (Shizuku.checkSelfPermission() == PackageManager.PERMISSION_GRANTED) {
-            Execute.setClickable(true);
-            status_button.setText("Shizuku access is granted!");
-            request_button.setVisibility(View.GONE);
-            status_button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#00C800")));
-            return true;
-        } else {
-            Execute.setClickable(false);
-            status_button.setText("Shizuku access is not detected.\nHave you granted permission?\nClick here to request access");
-            status_button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#C80000")));
-            //status_button.setTextColor(Color.parseColor("#ffffff"));
-            request_button.setVisibility(View.VISIBLE);
-            request_button.setOnClickListener(v -> Shizuku.requestPermission(MainActivity.SHIZUKU_REQUEST_CODE));
-            return false;
-        }*/
     }
 
     private void runShellCommand() {
