@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     public static boolean checkShizukuPermission() {
         if (Shizuku.isPreV11()) {
             return false;
